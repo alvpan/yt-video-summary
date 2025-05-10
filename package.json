@@ -23,5 +23,11 @@
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "cheerio": "1.0.0-rc.12"
+  },
+  "resolutions": {
+    "cheerio": "1.0.0-rc.12"
   }
 }
