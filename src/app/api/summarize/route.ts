@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import { OpenAI } from 'openai';
 import ytdl from 'ytdl-core';
-
-// @ts-ignore
-import { YouTubeTranscript } from 'youtube-transcript-api';
+import { YoutubeTranscript } from 'youtube-transcript';
 
 
 const openai = new OpenAI({
@@ -32,7 +30,7 @@ export async function POST(req: Request) {
     const videoId = ytdl.getURLVideoID(url);
 
     // Get transcript
-    const transcript = await YouTubeTranscript.fetchTranscript(videoId);
+    const transcript = await YoutubeTranscript.fetchTranscript(videoId);
     const fullText = transcript.map((t: any) => t.text).join(' ');
     const chunks = chunkText(fullText);
 
