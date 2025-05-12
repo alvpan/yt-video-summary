@@ -7,12 +7,12 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false)
   const [summary, setSummary] = useState('')
   const [lengthSeconds, setLengthSeconds] = useState<number | null>(null)
-  const [hasSummarized, setHasSummarized] = useState(false)   // NEW
+  const [hasSummarized, setHasSummarized] = useState(false)
 
   const handleSummarize = async () => {
     setLoading(true)
     setSummary('')
-    setHasSummarized(false)          // ready for a fresh run
+    setHasSummarized(false)
 
     try {
       const res = await fetch('/api/summarize', {
@@ -28,7 +28,7 @@ export default function HomePage() {
       setSummary('❌ Error summarizing video.')
     } finally {
       setLoading(false)
-      setHasSummarized(true)         // hide the button
+      setHasSummarized(true)
     }
   }
 
@@ -60,7 +60,7 @@ export default function HomePage() {
         />
 
         {loading ? (
-          // loading dots
+          // Loading dots
           <div className="flex items-center justify-center h-10">
             <div className="flex space-x-2">
               <span className="w-3 h-3 bg-white rounded-full animate-bounce [animation-delay:-0.3s]" />
@@ -69,7 +69,6 @@ export default function HomePage() {
             </div>
           </div>
         ) : (
-          // show button **only** if we haven’t summarized yet
           !hasSummarized && (
             <button
               onClick={handleSummarize}
